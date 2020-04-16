@@ -19,6 +19,9 @@ class AppNav extends Component {
                   <NavItem>
                     <NavLink href="/Cv">Curriculum Vitae</NavLink>
                   </NavItem>
+                  <NavItem>
+                    <NavLink href="/Upload">Upload</NavLink>
+                  </NavItem>
                 
                 </Nav>
           
