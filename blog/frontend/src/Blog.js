@@ -18,7 +18,7 @@ class Blog extends Component {
             {
                 Posts.map( post => 
                     <div id={post.id}><br/>
-                        {post.title}<br/>{post.content}
+                        {post.title}<br/>{post.content}<br/>!!{post.postImage}!!
                     </div>
                     
                 )

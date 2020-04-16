@@ -53,7 +53,7 @@ public class PostController {
 		@PostMapping("/post/new")
 		public ResponseEntity<Post> createCategory(@Valid @RequestBody Post post) throws URISyntaxException{
 		  Post result= postRepo.save(post);
-		  return ResponseEntity.created(new URI("/post/new" + result.getId())).body(result); 
+		  return ResponseEntity.created(new URI("/post/new" + result.getPost_id())).body(result); 
 		
 		}
 

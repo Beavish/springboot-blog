@@ -51,6 +51,13 @@ public class PostImageController {
 	  URI location = ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
 	  return ResponseEntity.created(location).build();
 	}
+	@GetMapping("/{id}")
+	public	ResponseEntity<?> getImage(@PathVariable Long id){
+		Optional<PostImage> image = imageRepo.findById(id);
+		 return image.map(response -> ResponseEntity.ok().body(response))
+				 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+		 
+		}
  
   
 			
