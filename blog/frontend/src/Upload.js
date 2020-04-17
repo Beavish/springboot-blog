@@ -43,13 +43,17 @@ class Upload extends Component {
    
   }
     render() { 
-        return (<div className="App-intro">
+        return (
+          
+        
+        <div className="App-intro">
         <h3>Upload a file</h3>
         <h4 style={{color: 'red'}}>{this.state.error}</h4>
         <h4 style={{color: 'green'}}>{this.state.msg}</h4>
         <input onChange={this.onFileChange} type="file"></input>
         <button onClick={this.uploadFile}>Upload</button>   
-      </div> );
+      </div> 
+      );
     }
 }
  

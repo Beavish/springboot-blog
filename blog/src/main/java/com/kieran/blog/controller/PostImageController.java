@@ -41,8 +41,6 @@ public class PostImageController {
 	private PostImageRepository imageRepo;
 	
 
-	
-
 	@PostMapping
 	public ResponseEntity<Void> uploadNewFile(@NotNull @RequestParam("file") MultipartFile file) throws IOException {
 	  PostImage image = new PostImage(null, file.getOriginalFilename(),file.getContentType(),file.getBytes(), null);
