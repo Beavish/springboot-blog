@@ -41,9 +41,9 @@ public class PostImage {
 	@Lob
 	private byte [] imageByte;
 	
-
+/*
+*/
 	@ManyToOne
     @JoinColumn(name = "post_id", insertable = false, updatable = false, nullable=true)
     private Post post;
-
 }

@@ -58,6 +58,11 @@ public class PostImageController {
 				 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 		 
 		}
+	@GetMapping("/all")
+	  public @ResponseBody Iterable<PostImage> getAllImages() {
+	    // This returns a JSON or XML with the users
+	    return imageRepo.findAll();
+	  }
  
   
 			
