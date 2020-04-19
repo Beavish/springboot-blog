@@ -31,6 +31,7 @@ class Upload extends Component {
       let data = new FormData();
       data.append('file', this.state.file);
       data.append('name', this.state.file.name);
+      console.log(data);
    
       fetch('http://localhost:8080/api/images', {
         method: 'POST',
@@ -44,7 +45,7 @@ class Upload extends Component {
   }
     render() { 
         return (
-          
+
         
         <div className="App-intro">
         <h3>Upload a file</h3>

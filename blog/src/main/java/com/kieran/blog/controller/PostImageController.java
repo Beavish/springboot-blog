@@ -54,8 +54,8 @@ public class PostImageController {
 		Optional<PostImage> image = imageRepo.findById(id);
 		 return image.map(response -> ResponseEntity.ok().body(response))
 				 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-		 
 		}
+	
 	@GetMapping("/all")
 	  public @ResponseBody Iterable<PostImage> getAllImages() {
 	    // This returns a JSON or XML with the users

@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,7 +44,8 @@ public class PostImage {
 	
 /*
 */
-	@ManyToOne
-    @JoinColumn(name = "post_id", insertable = false, updatable = false, nullable=true)
+	@JsonBackReference
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "post_id", insertable = true, updatable = true, nullable=true)
     private Post post;
 }
