@@ -21,7 +21,7 @@ class NewPost extends Component {
     this.state = { date_created: new Date(), item: this.emptyItem,file: this.emptyFile };
 
     this.handleChange = this.handleChange.bind(this);
-    this.onFileChange = this.onFileChange.bind(this);
+   // this.onFileChange = this.onFileChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -41,7 +41,9 @@ class NewPost extends Component {
   }
 
   handleSubmit(event) {
+   
     const item = this.state.item;
+    
 
     const requestOptions = {
         method: 'POST',
@@ -54,25 +56,11 @@ class NewPost extends Component {
       })
       .then((data) => {
         
-
-        let imgdata = new FormData();
-        const postID = data.post_id;
-        
-        imgdata.append('file', this.state.file);
-        imgdata.append('name', this.state.file.name);
-        imgdata.append('post_id', postID);// this doesn't appened the post id as post is not in the state
-        // need to figure out how to modify the state to also contain the post_id
+        const postID =JSON.stringify(data.post_id);
        
         console.log(postID);
-        fetch('http://localhost:8080/api/images', {
-          method: 'POST',
-          body: imgdata
-        }).then(response => {
-          this.setState({error: '', msg: 'Sucessfully uploaded file'});
-        }).catch(err => {
-          this.setState({error: err});
-        });
-      });
+    
+      }); 
         
 
 

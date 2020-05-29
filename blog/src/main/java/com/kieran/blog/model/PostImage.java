@@ -33,7 +33,7 @@ public class PostImage {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long image_id;
+	private Long id;
 	
 	private String name;
 	 
@@ -42,10 +42,13 @@ public class PostImage {
 	@Lob
 	private byte [] imageByte;
 	
-/*
-*/
+	private Long post_id;
+
+
+
 	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "post_id", insertable = true, updatable = true, nullable=true)
+	@JoinColumn(name = "post_id", insertable = false, updatable = false, nullable=true)
     private Post post;
+    
 }
