@@ -36,6 +36,7 @@ class NewPost extends Component {
   };
 
   handleSubmit(event) {
+    event.preventDefault();
     const item = this.state.item;
     const requestOptions = {
       method: "POST",
@@ -61,7 +62,7 @@ class NewPost extends Component {
             this.setState({ error: err });
           });
       });
-      event.preventDefault();
+    
   }
 
   render() {
@@ -70,7 +71,7 @@ class NewPost extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:
-            <input type="text" name="title" onChange={this.handleChange} />
+            <input type="text" name="title" onChange={this.handleChange} required/>
             <br />
           </label>
           <br />

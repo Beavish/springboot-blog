@@ -34,10 +34,11 @@ public class Post {
 	
 	  @Id
 	  @GeneratedValue(strategy=GenerationType.IDENTITY)
-	  private Long post_id;
+	  private Long id;
 
 	  private String title;
-
+	  
+	  @Column(columnDefinition="TEXT")
 	  private String content;
 	  
 	  private Date date_created;
