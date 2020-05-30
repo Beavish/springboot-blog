@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
 
 class NewPost extends Component {
   emptyItem = {
@@ -62,33 +64,56 @@ class NewPost extends Component {
             this.setState({ error: err });
           });
       });
-    
   }
 
   render() {
     return (
+      
       <div className="container">
         <form onSubmit={this.handleSubmit}>
+        <FormGroup  initialValues={{ Title: '', Content: '' }}>
           <label>
-            Name:
-            <input type="text" name="title" onChange={this.handleChange} required/>
-            <br />
-          </label>
-          <br />
-          <label>
-            Content:
-            <textarea
+            Title:
+            <input
               type="text"
-              name="content"
+              name="title"
               onChange={this.handleChange}
-            ></textarea>
+              required
+            />
+            
           </label>
+          </FormGroup>
 
+          <FormGroup>
+          <label>Content:</label>
+          <textarea  
+            type="text"
+            name="content"
+            onfocus="this.value=''; setbg('#e5fff3');" 
+            onblur="setbg('white')"
+            onChange={this.handleChange}
+          ></textarea>
+          </FormGroup>
+          <FormGroup>
           <h4 style={{ color: "red" }}>{this.state.error}</h4>
           <h4 style={{ color: "green" }}>{this.state.msg}</h4>
-          <input type="file" name="file" onChange={this.onChangeHandler} />
+          </FormGroup>
+
+          <FormGroup>
+          <input
+            type="file"
+            name="file"
+            onChange={this.onChangeHandler}
+            required
+          />
+          </FormGroup>
+          <FormGroup>
           <input type="submit" value="Submit" />
+          </FormGroup>
         </form>
+        
+        
+
       </div>
     );
   }

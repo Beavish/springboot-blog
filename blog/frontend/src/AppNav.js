@@ -20,7 +20,7 @@ class AppNav extends Component {
                     <NavLink href="/Cv">Curriculum Vitae</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="/Upload">Upload</NavLink>
+                    <NavLink href="/Admin">Admin</NavLink>
                   </NavItem>
                   <NavItem>
                     <NavLink href="/NewPost">NewPost</NavLink>

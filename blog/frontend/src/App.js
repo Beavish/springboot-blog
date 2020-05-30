@@ -5,7 +5,7 @@ import Blog from './Blog';
 import Home from './Home';
 import CV from './Cv';
 import NewPost from './NewPost'
-import Admin from './admin';
+import Admin from './Admin';
 
 
 class App extends Component {
