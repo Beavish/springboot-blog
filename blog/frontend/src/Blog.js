@@ -32,7 +32,6 @@ class Blog extends Component {
   }
   render() {
     const { Posts, isLoading } = this.state;
-    console.log(Posts);
     if (isLoading) return <div>Loading...</div>;
     return (
       <div>

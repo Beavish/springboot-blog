@@ -4,9 +4,21 @@ import { Button } from "reactstrap";
 
 
 class PostManager extends Component {
-  state = { isLoading: true, Posts: [] };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true, 
+      Posts: []
+    };
+
+    console.log('props', props);
+    console.log('props.location', props.location);
+}
 
   async componentDidMount() {
+    this.props.match.params.id
+    console.log(this.props.match.params.id);
     const response = await fetch("/posts/all");
     const body = await response.json();
     this.setState({ Posts: body, isLoading: false });
