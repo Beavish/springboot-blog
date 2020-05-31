@@ -23,7 +23,7 @@ class AppNav extends Component {
                     <NavLink href="/Admin">Admin</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="/NewPost">NewPost</NavLink>
+                    <NavLink href="/PostManager">PostManager</NavLink>
                   </NavItem>
                 
                 </Nav>

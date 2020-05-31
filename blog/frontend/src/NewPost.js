@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Route, BrowserRouter as Router,Switch} from 'react-router-dom'
+
 
 
 class NewPost extends Component {
@@ -16,6 +18,8 @@ class NewPost extends Component {
       item: this.emptyItem,
       selectedFile: null,
     };
+
+    this.baseState = this.state;
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

@@ -1,27 +1,29 @@
 import React, { Component } from "react";
 import { Button } from "reactstrap";
-
+import { Link } from "react-router-dom";
 class Blog extends Component {
   state = { isLoading: true, Posts: [] };
 
   deletePost(id) {
-    fetch(`/posts/post/${id}` , {
-        method: 'DELETE' ,
-        headers : {
-          'Accept' : 'application/json',
-          'Content-Type' : 'application/json'
-        }
-
-      }).then(() => {
-        let updatedPosts = [...this.state.Posts].filter(i => i.id !== id);
-        this.setState({Posts : updatedPosts});
-      });
+    fetch(`/posts/post/${id}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    }).then(() => {
+      let updatedPosts = [...this.state.Posts].filter((i) => i.id !== id);
+      this.setState({ Posts: updatedPosts });
+    });
   }
-
-
-  editPost() {
+  updatePost(id) {
     console.log("Hi");
   }
+
+  goToShow(id) {
+    console.log("hi" + id);
+  }
+
   // load all the posts
   async componentDidMount() {
     const response = await fetch("/posts/all");
@@ -34,36 +36,57 @@ class Blog extends Component {
     if (isLoading) return <div>Loading...</div>;
     return (
       <div>
-        <h2>Posts</h2>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Subject</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          {Posts.map((post) => (
+            <tbody>
+              <td>{post.id}</td>
+              <td>{post.title}</td>
+              <td>{post.date_created}</td>
 
-        {Posts.map((post) => (
-          <div id={post.id}>
-            <br />
-            <h2>{post.title}</h2>
+              <td>
+                <span>
+                  <Link to={`/show/${post.id}`}>
+                    <Button outline color="info">
+                      Read
+                    </Button>
+                  </Link>
+                </span>
+              </td>
 
-            <div>
-              <br />
-              {post.content}
-              <br />
-              {
-                // need some logic to check if there are images first or it'll break
-              }
-              {console.log(post.postImage[0].imageByte)}
-              <img
-                src={"data:image/jpg;base64," + post.postImage[0].imageByte}
-                alt="something"
-                width="500"
-                height="600"
-              />
-            </div>
-            <Button onClick={this.editPost} outline color="info">
-              Edit
-            </Button>
-            <Button onClick={() => this.deletePost(post.id)} outline color="danger">
-              Delete
-            </Button>
-          </div>
-        ))}
+              <td>
+                <span>
+                <Link to={`/show/${post.id}`}>
+                    <Button color="info">
+                      Edit
+                    </Button>
+                  </Link>
+                </span>
+              </td>
+
+              <td>
+                <span>
+                  {" "}
+                  <Button
+                    onClick={() => this.deletePost(post.id)}
+                    outline
+                    color="danger"
+                  >
+                    Delete
+                  </Button>
+                </span>
+              </td>
+            </tbody>
+          ))}
+        </table>
       </div>
     );
   }
