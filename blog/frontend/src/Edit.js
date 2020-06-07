@@ -46,6 +46,7 @@ class Edit extends Component {
         <Label for="photo" sm={2}>Photo:</Label>
         <Col sm={10}>
           <Input type="file" name="photo" id="photo" value={Posts.postImage.name} />
+          We need to show the old photo and give an option to update the new photo
           <FormText color="muted">
             
           </FormText>
