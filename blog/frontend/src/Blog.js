@@ -53,7 +53,7 @@ class Blog extends Component {
 
               <td>
                 <span>
-                  <Link to={`/show/${post.id}`}>
+                  <Link to={`/Show/${post.id}`}>
                     <Button outline color="info">
                       Read
                     </Button>
@@ -63,7 +63,7 @@ class Blog extends Component {
 
               <td>
                 <span>
-                <Link to={`/show/${post.id}`}>
+                <Link to={`/Edit/${post.id}`}>
                     <Button color="info">
                       Edit
                     </Button>

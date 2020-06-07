@@ -4,9 +4,10 @@ import { Route, BrowserRouter as Router,Switch} from 'react-router-dom'
 import Blog from './Blog';
 import Home from './Home';
 import CV from './Cv';
-import show from './show'
+import Show from './Show'
 import Admin from './Admin';
 import PostManager from './PostManager';
+import Edit from './Edit';
 
 
 class App extends Component {
@@ -21,7 +22,8 @@ class App extends Component {
            <Route path='/Cv' exact={true} component={CV}/>
            <Route path='/Admin' exact={true} component={Admin}/>
            <Route path='/PostManager' exact={true} component={PostManager}/>
-           <Route path="/show/:id" component={show}></Route>
+           <Route path="/Show/:id" component={Show}></Route>
+           <Route path="/Edit/:id" component={Edit}></Route>
 
       </Switch>
    </Router>
