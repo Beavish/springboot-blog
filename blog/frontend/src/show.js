@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Image from 'react-bootstrap/Image'
 
 class Show extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class Show extends Component {
                { Posts.id}
                {Posts.title}
                {Posts.content}
-               <img src={"data:image/jpg;base64," +  Posts.postImage[0].imageByte}alt="something"/>
+               <Image src={"data:image/jpg;base64," +  Posts.postImage[0].imageByte} fluid />
             
             
            

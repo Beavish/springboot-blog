@@ -61,6 +61,22 @@ public class PostImageController {
 	  return ResponseEntity.ok(res);
 	}
 	
+	@PutMapping("/{id}")
+	public ResponseEntity<PostImage> updateFile(@NotNull @RequestParam("file") MultipartFile file,
+			@RequestParam("post_id") Long postId)
+					throws IOException {
+		// Now we need to dynamically pass post id to this function
+	  PostImage image = new PostImage( null, file.getOriginalFilename(),file.getContentType(),file.getBytes(), postId, null);
+      System.out.println(postId);
+
+
+	  PostImage res = imageRepo.save(image);
+	  URI location = ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
+	  System.out.println(res);
+	  
+	  return ResponseEntity.ok(res);
+	}
+	
 	@GetMapping("/{id}")
 	public	ResponseEntity<?> getImage(@PathVariable Long id){
 		Optional<PostImage> image = imageRepo.findById(id);
