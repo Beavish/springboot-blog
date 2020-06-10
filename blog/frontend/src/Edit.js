@@ -32,18 +32,17 @@ class Edit extends Component {
       selectedFile: null,
     };
 
-    console.log("props", props);
-    console.log("props.location", props.location);
+    //console.log("props", props);
+    //console.log("props.location", props.location);
 
     this.baseState = this.state;
     this.handleChange = this.handleChange.bind(this);
-    this.onChangeHandler = this.onChangeHandler.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async componentDidMount() {
     const id = this.state.id;
-    console.log(id);
+    //console.log(id);
     const response = await fetch("/posts/post/" + id);
     const body = await response.json();
     this.setState({ Posts: body, isLoading: false });
@@ -51,7 +50,6 @@ class Edit extends Component {
   }
   onChangeHandler = (event) => {
     const file = event.target.files[0];
-    console.log(file);
     this.setState({
       selectedFile: file,
     });
@@ -65,7 +63,7 @@ class Edit extends Component {
     let item = { ...this.state.item };
     item[name] = value;
     this.setState({ item });
-    console.log(this.state.item);
+    //console.log(this.state.item);
   }
 
   deletImage(id) {}
@@ -81,13 +79,16 @@ class Edit extends Component {
     fetch("/posts/post/" + this.state.id, requestOptions)
       .then((response) => response.json())
       .then((data) => {
+        console.log(this.state.selectedFile);
         const img = new FormData();
         img.append("file", this.state.selectedFile);
         img.append("post_id", this.state.id);
+        img.append("id",this.state.Posts.postImage[0].id,)
+        
 
         const imgRequestOptions = {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+          // specifying an incorrect header, results in the file not being accept as a multipart file in java server
           body: img,
         };
         fetch(
@@ -154,9 +155,8 @@ class Edit extends Component {
                     onChange={this.onChangeHandler}
                     required
                   />
-                  We need to show the old photo and give an option to update the
-                  new photo
-                  <FormText color="muted"></FormText>
+                  
+                  <FormText color="muted">Required if photo should also be modified</FormText>
                 </Col>
               </FormGroup>
               <FormGroup check row>

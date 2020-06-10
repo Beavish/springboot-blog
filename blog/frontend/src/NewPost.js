@@ -19,7 +19,7 @@ class NewPost extends Component {
       selectedFile: null,
     };
 
-    this.baseState = this.state;
+    
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,8 +37,9 @@ class NewPost extends Component {
     const file = event.target.files[0];
     console.log(file);
     this.setState({
-      selectedFile: file,
+      selectedFile: event.target.files[0],
     });
+    console.log(this.state.selectedFile);
   };
 
   handleSubmit(event) {
